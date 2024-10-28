@@ -1,9 +1,8 @@
-
-import { useContext,useState } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../components/DataContext";
 import Header from "../components/Header";
-import UserCard from "../components/userCard";
 import UserModal from "../components/UserModal";
+import UserCard from "../components/UserCard";
 
 const SearchResults = () => {
   const { data } = useContext(DataContext);
@@ -22,25 +21,25 @@ const SearchResults = () => {
   };
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen flex flex-col">
       <Header />
       {data.length > 0 ? (
-        <div className="bg-blue-50">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 px-[200px] min-h-[calc(100vh-4rem)]">
+        <div className="bg-blue-50 flex-1"> 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
             {data.map((item, index) => (
-              <div key={index}>
-                <UserCard user={item} handleOpenModal={handleOpenModal}/>
+              <div key={index} className="flex justify-center"> 
+                <UserCard user={item} handleOpenModal={handleOpenModal} />
               </div>
             ))}
           </div>
         </div>
       ) : (
-        <div className="flex justify-center items-center bg-blue-50 h-[calc(100vh-4rem)] flex-col gap-10">
-        <img src="/no-results.png" alt="not-found" className="h-[130px]" />
-            <p className="text-2xl font-semibold">No Results Found.</p>
+        <div className="flex justify-center items-center bg-blue-50 h-full flex-col gap-10 flex-1"> 
+          <img src="/no-results.png" alt="not-found" className="h-[130px]" />
+          <p className="text-2xl font-semibold">No Results Found.</p>
         </div>
       )}
-       <UserModal user={selectedUser} isOpen={isModalOpen} onClose={handleCloseModal} />
+      <UserModal user={selectedUser} isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 };
