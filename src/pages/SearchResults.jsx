@@ -24,15 +24,15 @@ const SearchResults = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       {data.length > 0 ? (
-        <div className="bg-blue-50 flex-1"> 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-            {data.map((item, index) => (
-              <div key={index} className="flex justify-center"> 
-                <UserCard user={item} handleOpenModal={handleOpenModal} />
-              </div>
-            ))}
-          </div>
-        </div>
+       <div className="bg-blue-50 flex-1">
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 px-4 sm:px-8 md:px-16 lg:px-[200px]">
+         {data.map((item, index) => (
+           <div key={index} className="flex justify-center">
+             <UserCard user={item} handleOpenModal={handleOpenModal} />
+           </div>
+         ))}
+       </div>
+     </div>
       ) : (
         <div className="flex justify-center items-center bg-blue-50 h-full flex-col gap-10 flex-1"> 
           <img src="/no-results.png" alt="not-found" className="h-[130px]" />
